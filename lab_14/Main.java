@@ -10,10 +10,17 @@ public class Main {
 		try {
 			copyNoEmptyStrings("C:\\Users\\User\\eclipse-workspace\\hg.txt",
 					"C:\\Users\\User\\eclipse-workspace\\h.txt");
+			System.out.println(longestZeroSequenceLength("C:\\Users\\User\\eclipse-workspace\\hg.txt"));
 			System.out.println("Success!!!");
 		} catch (IOException e) {
 			System.out.println("Exception: " + e.getMessage());
 		} catch (IllegalArgumentException e) {
+			System.out.println("Exception: " + e.getMessage());
+		}
+		try {
+			System.out.println("Length of longest zero sequence: "
+					+ longestZeroSequenceLength("C:\\Users\\User\\eclipse-workspace\\hg.txt"));
+		} catch (IOException e) {
 			System.out.println("Exception: " + e.getMessage());
 		}
 	}
@@ -47,6 +54,32 @@ public class Main {
 			}
 		} catch (IOException ex) {
 			throw new IOException("not exist file", ex);
+		}
+	}
+	public static long longestZeroSequenceLength(String filename) throws IOException{
+		try(FileReader input = new FileReader(filename)){
+			char[] buf = new char[512];
+			int readResult;
+			int maxZeroStringSize = 0, currentZeroStringSize = 0;
+			while ((readResult = input.read(buf)) != -1){
+				for (int i = 0; i < readResult; i++){
+					System.out.println(buf[i]);
+					if(buf[i] == '0'){
+						currentZeroStringSize++;
+					} else {
+						if(currentZeroStringSize > maxZeroStringSize){
+							maxZeroStringSize = currentZeroStringSize;
+						}
+						currentZeroStringSize = 0;
+					}
+				}
+			}
+			if(currentZeroStringSize > maxZeroStringSize){
+				maxZeroStringSize = currentZeroStringSize;
+			}
+			return maxZeroStringSize;
+		} catch (IOException e) {
+			throw new IOException("file not found", e);
 		}
 	}
 }
