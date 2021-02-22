@@ -39,14 +39,15 @@ public class Main {
 					if (buffer[i] == 10 && start) {
 						continue;
 					}
-					if(buffer[i]==10){
+					if (buffer[i] == 10) {
 						start = true;
 					} else {
 						start = false;
-					output.write(buffer[i]);
-				}
-				if (count == 0) {
-					throw new IllegalArgumentException("Empty file");
+						output.write(buffer[i]);
+					}
+					if (count == 0) {
+						throw new IllegalArgumentException("Empty file");
+					}
 				}
 			}
 		} catch (IOException ex) {
