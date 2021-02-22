@@ -10,7 +10,6 @@ public class Main {
 		try {
 			copyNoEmptyStrings("C:\\Users\\User\\eclipse-workspace\\hg.txt",
 					"C:\\Users\\User\\eclipse-workspace\\h.txt");
-			System.out.println(longestZeroSequenceLength("C:\\Users\\User\\eclipse-workspace\\hg.txt"));
 			System.out.println("Success!!!");
 		} catch (IOException e) {
 			System.out.println("Exception: " + e.getMessage());
