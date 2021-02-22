@@ -36,14 +36,13 @@ public class Main {
 					if (buffer[i] == 13 && start) {
 						continue;
 					}
-					if (buffer[i] == 10) {
-						if (!start) {
-							output.write(buffer[i]);
-						}
-						start = true;
+					if (buffer[i] == 10 && start) {
 						continue;
 					}
-					start = false;
+					if(buffer[i]==10){
+						start = true;
+					} else {
+						start = false;
 					output.write(buffer[i]);
 				}
 				if (count == 0) {
