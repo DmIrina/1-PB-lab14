@@ -33,19 +33,18 @@ public class Main {
 			while ((thread = input.read(buffer)) != -1) {
 				for (int i = 0; i < thread; i++) {
 					count++;
-					char character = (char) buffer[i];
-					if (character == 13 && start) {
+					if (buffer[i] == 13 && start) {
 						continue;
 					}
-					if (character == 10) {
+					if (buffer[i] == 10) {
 						if (!start) {
-							output.write(character);
+							output.write(buffer[i]);
 						}
 						start = true;
 						continue;
 					}
 					start = false;
-					output.write(character);
+					output.write(buffer[i]);
 				}
 				if (count == 0) {
 					throw new IllegalArgumentException("Empty file");
