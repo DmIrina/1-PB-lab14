@@ -3,7 +3,7 @@ package lab_14;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class LongestZeroSequenceLength {
+public class Task9 {
     public static long longestZeroSequenceLength(String filename) throws IOException {
         try(FileReader input = new FileReader(filename)){
             char[] buf = new char[512];
